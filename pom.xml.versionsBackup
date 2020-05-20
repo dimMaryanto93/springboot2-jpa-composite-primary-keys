@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.maryanto.dimas.example</groupId>
     <artifactId>springboot2-jpa-composite-primarykey</artifactId>
-    <version>2020.05.20.12.08-release</version>
+    <version>0.0.1-SNAPSHOT</version>
     <name>springboot2-jpa-composite-primarykey</name>
     <description>Springboot JPA Composite Primary Key example</description>
 
