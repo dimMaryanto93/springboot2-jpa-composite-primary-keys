@@ -1,0 +1,44 @@
+server:
+  port: ${APPLICATION_PORT:8080}
+# spring configuration
+spring:
+  application:
+    name: @project.artifactId@
+    version: @project.version@
+    fullname: @project.name@
+  mvc:
+    dispatch-options-request: true
+  datasource:
+    url: jdbc:postgresql://${DATABASE_HOST:localhost}:${DATABASE_PORT:5432}/${DATABASE_NAME:spring_jpa}
+    username: ${DATABASE_USER:spring_jpa}
+    password: ${DATABASE_PASSWORD:spring_jpa}
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+        enable_lazy_load_no_trans: true
+        id:
+          new_generator_mappings: false
+        current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
+        globally_quoted_identifiers: true
+        temp:
+          use_jdbc_metadata_defaults: false
+  flyway:
+    encoding: UTF-8
+    enabled: ${FLYWAY_ENABLED:true}
+    baseline-on-migrate: true
+    check-location: true
+    locations: classpath:/db/migration/postgresql
+    clean-disabled: false
+    clean-on-validation-error: true
+    connect-retries: 2
+logging:
+  level:
+    org.springframework: ERROR
+    com.tabeldata: DEBUG
+  file:
+    name: ${LOG_LOCATION:${spring.application.name}.log}
